@@ -18,10 +18,9 @@ deltab		equ	4
 
 	; generate bitplane row pattern (1 row is enough)
 	lea	bitplane,a0			;
-	moveq	#-1,d0				;
-	moveq	#10-1,d7			; 10*4*8 = 320px
-.row	clr.l	pwidth/2(a0)			;
-	move.l	d0,(a0)+			;
+	moveq	#40-1,d7			; 40*8 = 320px
+.row	sf	pwidth/2(a0)			;
+	st	(a0)+				;
 	dbf	d7,.row				;
 
 	; generate sin table (by gigabates)
